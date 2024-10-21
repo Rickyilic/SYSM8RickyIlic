@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:FitTrack"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <StackPanel>
+        <StackPanel Orientation="Vertical" DockPanel.Dock="Left"/>
+        
+        <TextBlock Text="Username:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBox x:Name="UserName" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBlock Text="Password:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBox x:Name="PassWord" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <StackPanel/>
+        <StackPanel>
+        <Label Width="225" Height="100" Content="FitTrack" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Arial" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        </StackPanel>
+    </StackPanel>
+    
 
-    </Grid>
 </Window>
