@@ -22,6 +22,33 @@ namespace FitTrack
         public RegisterWindow()
         {
             InitializeComponent();
+            PopulateComboBox();
+
+        }
+        private void PopulateComboBox()
+        {
+            string[] europeanCountries = new string[]
+            {
+            "Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina",
+            "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland",
+            "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo",
+            "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco",
+            "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal",
+            "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain",
+            "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"
+            };
+
+            foreach (string countryName in europeanCountries)
+            {
+                comboBox.Items.Add(countryName);
+            }
+        }
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
+
+
