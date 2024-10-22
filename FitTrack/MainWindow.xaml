@@ -5,19 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitTrack"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
-        <StackPanel Orientation="Vertical" DockPanel.Dock="Left"/>
-        
-        <TextBlock Text="Username:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <TextBox x:Name="UserName" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <TextBlock Text="Password:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <TextBox x:Name="PassWord" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <StackPanel/>
-        <StackPanel>
-        <Label Width="225" Height="100" Content="FitTrack" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Arial" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        </StackPanel>
-    </StackPanel>
+        Title="MainWindow" Height="600" Width="1000">
     
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="60*"/>
+        </Grid.RowDefinitions>
+        <Border Background="LightGray" Grid.Row="1"/>
+        <Border Background="LightGray" Grid.Row="0"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Crimson">
+            <Label Content="FitTrack" FontSize="150"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Username:"/>
+            <TextBox x:Name="UserName" Width="70" Margin="0,0,0,0"/>
+            <TextBlock Text="Password:" />
+            <PasswordBox x:Name="PassWord" Width="70"/>
+            <Button Name="SignIn" Content="Sign in" Margin="0,5,0,5" Click="SignIn_Click"/>
+            <Button Name="Register" Content="Register" Click="Register_Click"/>
+        </StackPanel>
+    </Grid>
+
+
 
 </Window>

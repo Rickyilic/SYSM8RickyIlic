@@ -21,5 +21,17 @@ namespace FitTrack
         {
             InitializeComponent();
         }
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new RegisterWindow();
+
+            registerWindow.Show();
+        }
+
+        private void SignIn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
