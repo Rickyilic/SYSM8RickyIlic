@@ -58,30 +58,34 @@ namespace FitTrack
             string country = (CountryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? string.Empty;
 
 
-            //Logik för att registrera sig och ifall användarnamn och lösenord inte matchar
+            //Logik för att registrera sig och ifall användarnamn och lösenord inte matchar eller ifall man inte valt land
 
             if (password != confirmPassword)
             {
-                MessageBox.Show("Lösenorden matchar inte.");
+                MessageBox.Show("Password doesn't match. Try again.");
                 return;
             }
 
             if (userManager.UserExists(username))
             {
-                MessageBox.Show("Användarnamnet är redan upptaget.");
+                MessageBox.Show("Username already taken.");
                 return;
             }
             if (CountryComboBox.SelectedItem == null)
             {
-                MessageBox.Show("Vänligen välj ett land.");
+                MessageBox.Show("Please choose a country.");
                 return;
             }
 
 
             User newUser = new User(username, password, country);
             userManager.RegisterUser(newUser);
-            MessageBox.Show("Registrering slutförd!");
+            MessageBox.Show("Registration successfull!");
             Close();
+
+            MainWindow mainWindow = new MainWindow(userManager);
+            mainWindow.Show();
+            this.Close();
         }
 
     }

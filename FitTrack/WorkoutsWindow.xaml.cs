@@ -19,9 +19,16 @@ namespace FitTrack
     /// </summary>
     public partial class WorkoutsWindow : Window
     {
-        public WorkoutsWindow()
+        private User currentUser;
+        private UserManager userManager;
+
+        public WorkoutsWindow(User user, UserManager userManager)
         {
             InitializeComponent();
+            this.currentUser = user;
+            this.userManager = userManager;
         }
+
+        
     }
 }

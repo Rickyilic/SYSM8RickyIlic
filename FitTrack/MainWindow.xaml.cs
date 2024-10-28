@@ -18,10 +18,10 @@ namespace FitTrack
     public partial class MainWindow : Window
     {
         private UserManager userManager = new UserManager();
-        public MainWindow()
+        public MainWindow(UserManager userManager)
         {
             InitializeComponent();
-           
+            this.userManager = userManager;
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
@@ -29,11 +29,26 @@ namespace FitTrack
             RegisterWindow registerWindow = new RegisterWindow(userManager);
 
             registerWindow.Show();
+            this.Close();
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
+            string username = UsernameTextBox.Text;
+            string password = PasswordBox.Password;
 
+            if (userManager.TryLoginUser(username, password, out User user))
+            {
+                MessageBox.Show($"Welcome {user.Username}!");
+                // Navigera till WorkoutsWindow
+                WorkoutsWindow workoutsWindow = new WorkoutsWindow(user, userManager);
+                workoutsWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect username or password.");
+            }
         }
     }
 }

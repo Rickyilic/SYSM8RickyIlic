@@ -19,9 +19,10 @@ namespace FitTrack
         }
 
         // Metod för att logga in användaren med användarnamn och lösenord
-        public User LoginUser(string username, string password)
+        public bool TryLoginUser(string username, string password, out User user)
         {
-            return users.FirstOrDefault(u => u.Username == username && u.Password == password);
+            user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
+            return user != null;
         }
 
         // Kontrollmetod för att se om ett användarnamn redan finns
