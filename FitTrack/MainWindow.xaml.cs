@@ -17,14 +17,16 @@ namespace FitTrack
     /// </summary>
     public partial class MainWindow : Window
     {
+        private UserManager userManager = new UserManager();
         public MainWindow()
         {
             InitializeComponent();
+           
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            RegisterWindow registerWindow = new RegisterWindow();
+            RegisterWindow registerWindow = new RegisterWindow(userManager);
 
             registerWindow.Show();
         }

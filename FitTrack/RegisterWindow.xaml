@@ -5,16 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitTrack"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="300" Width="400">
+        Title="RegisterWindow" Height="250" Width="200">
     <Grid>
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,5">
             <TextBlock Text="Username:"/>
-            <TextBox x:Name="UserName" Width="70" />
+            <TextBox x:Name="UsernameTextBox" Width="70" HorizontalAlignment="Left" />
             <TextBlock Text="Password:"/>
-            <TextBox x:Name="PassWord" Width="70"/>
-            <ComboBox x:Name="comboBox" Margin="0,5,0,5">
+            <PasswordBox x:Name="PasswordBox" Width="70" HorizontalAlignment="Left"/>
+            <TextBlock Text="Confirm Password:"/>
+            <PasswordBox x:Name="ConfirmPasswordBox" Width="70" HorizontalAlignment="Left"/>
+            <TextBlock Text="Country:"/>
+            <ComboBox x:Name="CountryComboBox" Width="70" Margin="0,0,0,5" Text="Countries" HorizontalAlignment="Left">
             </ComboBox>
-            <Button Name="Register" Content="Register" Click="Register_Click"/>
+            <Button Name="RegisterButton" Content="Register" Click="Register_Click" Width="70" HorizontalAlignment="Left"/>
 
         </StackPanel>
     </Grid>

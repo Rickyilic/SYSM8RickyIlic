@@ -18,13 +18,18 @@ namespace FitTrack
     /// Interaction logic for RegisterWindow.xaml
     /// </summary>
     public partial class RegisterWindow : Window
+
+  
     {
-        public RegisterWindow()
+        private UserManager userManager;
+        public RegisterWindow(UserManager userManager)
         {
             InitializeComponent();
+            this.userManager = userManager;
             PopulateComboBox();
-
         }
+
+        //Lägger in alla länder i Combobox genom en array och en foreach loop
         private void PopulateComboBox()
         {
             string[] europeanCountries = new string[]
@@ -38,16 +43,47 @@ namespace FitTrack
             "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"
             };
 
+
             foreach (string countryName in europeanCountries)
             {
-                comboBox.Items.Add(countryName);
+                CountryComboBox.Items.Add(countryName);
             }
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
+            string username = UsernameTextBox.Text;
+            string password = PasswordBox.Password;
+            string confirmPassword = ConfirmPasswordBox.Password;
+            string country = (CountryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? string.Empty;
+
+
+            //Logik för att registrera sig och ifall användarnamn och lösenord inte matchar
+
+            if (password != confirmPassword)
+            {
+                MessageBox.Show("Lösenorden matchar inte.");
+                return;
+            }
+
+            if (userManager.UserExists(username))
+            {
+                MessageBox.Show("Användarnamnet är redan upptaget.");
+                return;
+            }
+            if (CountryComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Vänligen välj ett land.");
+                return;
+            }
+
+
+            User newUser = new User(username, password, country);
+            userManager.RegisterUser(newUser);
+            MessageBox.Show("Registrering slutförd!");
             Close();
         }
+
     }
 }
 
