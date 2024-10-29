@@ -27,8 +27,81 @@ namespace FitTrack
             InitializeComponent();
             this.currentUser = user;
             this.userManager = userManager;
+
+            // Visa det inloggade användarnamnet
+            UsernameTextBlock.Text = $"Logged in as: {currentUser.Username}";
+
+            // Ladda träningspassen i listan
+            LoadWorkouts();
+
+        }
+        private void LoadWorkouts()
+        {
+            WorkoutListBox.Items.Clear();
+
+            // För admin: ladda alla träningspass, annars bara användarens träningspass
+            List<Workout> workouts = currentUser.IsAdmin ? userManager.GetAllWorkouts() : userManager.GetUserWorkouts(currentUser.Username);
+            foreach (Workout workout in workouts)
+            {
+                WorkoutListBox.Items.Add(workout);
+            }
         }
 
-        
+        private void UserButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserDetailsWindow userDetailsWindow = new UserDetailsWindow(currentUser, userManager);
+            userDetailsWindow.ShowDialog();
+            LoadWorkouts(); // Uppdatera listan om ändringar har skett
+        }
+
+        private void AddWorkoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddWorkoutWindow addWorkoutWindow = new AddWorkoutWindow(currentUser, userManager);
+            addWorkoutWindow.ShowDialog();
+            LoadWorkouts(); // Uppdatera listan efter att ett nytt träningspass har lagts till
+
+        }
+
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("FitTrack is a place for anyone who wants an effective and helpful path through their fitness journey!");
+        }
+
+        private void SignOut_Click(object sender, RoutedEventArgs e)
+        {
+            // Logga ut och återgå till huvudfönstret
+            MainWindow mainWindow = new MainWindow(userManager);
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void DetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (WorkoutListBox.SelectedItem is Workout selectedWorkout)
+            {
+                // Öppna WorkoutDetailsWindow för det markerade träningspasset
+                WorkoutDetailsWindow detailsWindow = new WorkoutDetailsWindow(selectedWorkout, userManager);
+                detailsWindow.ShowDialog();
+                LoadWorkouts(); 
+            }
+            else
+            {
+                MessageBox.Show("Please select a workout to view details.");
+            }
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (WorkoutListBox.SelectedItem is Workout selectedWorkout)
+            {
+                // Ta bort det markerade träningspasset
+                userManager.RemoveWorkout(selectedWorkout);
+                LoadWorkouts(); 
+            }
+            else
+            {
+                MessageBox.Show("Please select a workout to remove.");
+            }
+        }
     }
 }

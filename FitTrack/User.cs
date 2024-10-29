@@ -14,7 +14,6 @@ namespace FitTrack
         public string Country { get; set; }
         public bool IsAdmin { get; set; } = false;
 
-        // Konstruktor för att skapa en ny användare med nödvändiga uppgifter
 
         public User(string username, string password, string country, bool isAdmin = false)
         {

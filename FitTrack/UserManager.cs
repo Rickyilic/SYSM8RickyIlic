@@ -10,6 +10,8 @@ namespace FitTrack
     {
         // Lista för att lagra alla användare
         private List<User> users = new List<User>();
+        //Lista för att lagra workouts
+        private List<Workout> workouts = new List<Workout>();
 
 
         // Metod för att registrera en ny användare
@@ -30,6 +32,31 @@ namespace FitTrack
         {
             return users.Any(u => u.Username == username);
         }
+        
+        // Lägger till träningspass
+        public void AddWorkout(Workout workout)
+        {
+            workouts.Add(workout);
+        }
+
+        // Hämtar alla träningspass (för admin)
+        public List<Workout> GetAllWorkouts()
+        {
+            return workouts;
+        }
+
+        // Hämtar träningspass för en specifik användare
+        public List<Workout> GetUserWorkouts(string username)
+        {
+            return workouts.Where(w => w.Username == username).ToList();
+        }
+
+        // Ta bort träningspass
+        public void RemoveWorkout(Workout workout)
+        {
+            workouts.Remove(workout);
+        }
+
     }
 
 }
