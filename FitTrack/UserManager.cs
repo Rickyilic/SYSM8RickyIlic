@@ -17,13 +17,20 @@ namespace FitTrack
         // Metod för att registrera en ny användare
         public void RegisterUser(User user)
         {
-            users.Add(user);
+            if (!UserExists(user.Username))
+            {
+                users.Add(user);
+            }
+            else
+            {
+                throw new Exception("Användarnamnet är redan upptaget.");
+            }
         }
 
         // Metod för att logga in användaren med användarnamn och lösenord
         public bool TryLoginUser(string username, string password, out User user)
         {
-            user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
+            user = users.OfType<User>().FirstOrDefault(u => u.Username == username && u.SignIn(password));
             return user != null;
         }
 
@@ -40,15 +47,15 @@ namespace FitTrack
         }
 
         // Hämtar alla träningspass (för admin)
-        public List<Workout> GetAllWorkouts()
+        public List<Workout> ManageAllWorkouts()
         {
-            return workouts;
+            return workouts; // Returnera alla träningspass
         }
 
         // Hämtar träningspass för en specifik användare
-        public List<Workout> GetUserWorkouts(string username)
+        public List<Workout> GetUserWorkouts(User user)
         {
-            return workouts.Where(w => w.Username == username).ToList();
+            return workouts.Where(w => w.Username == user.Username).ToList();
         }
 
         // Ta bort träningspass

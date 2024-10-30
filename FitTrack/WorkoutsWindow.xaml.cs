@@ -33,17 +33,31 @@ namespace FitTrack
 
             // Ladda träningspassen i listan
             LoadWorkouts();
+            
 
         }
         private void LoadWorkouts()
         {
             WorkoutListBox.Items.Clear();
 
-            // För admin: ladda alla träningspass, annars bara användarens träningspass
-            List<Workout> workouts = currentUser.IsAdmin ? userManager.GetAllWorkouts() : userManager.GetUserWorkouts(currentUser.Username);
-            foreach (Workout workout in workouts)
+            // Kontrollera om currentUser är av typen AdminUser
+            if (currentUser is AdminUser)
             {
-                WorkoutListBox.Items.Add(workout);
+                // Om det är en admin, hämta alla träningspass
+                List<Workout> workouts = userManager.ManageAllWorkouts();
+                foreach (Workout workout in workouts)
+                {
+                    WorkoutListBox.Items.Add(workout);
+                }
+            }
+            else
+            {
+                // Om det är en vanlig användare, hämta bara användarens träningspass
+                List<Workout> workouts = userManager.GetUserWorkouts(currentUser);
+                foreach (Workout workout in workouts)
+                {
+                    WorkoutListBox.Items.Add(workout);
+                }
             }
         }
 
@@ -72,7 +86,8 @@ namespace FitTrack
             // Logga ut och återgå till huvudfönstret
             MainWindow mainWindow = new MainWindow(userManager);
             mainWindow.Show();
-            this.Close();
+            this.Close();   
+
         }
 
         private void DetailsButton_Click(object sender, RoutedEventArgs e)

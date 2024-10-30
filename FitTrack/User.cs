@@ -7,20 +7,23 @@ using System.Threading.Tasks;
 
 namespace FitTrack
 {
-    public class User
+    public class User : Person
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+
         public string Country { get; set; }
-        public bool IsAdmin { get; set; } = false;
 
-
-        public User(string username, string password, string country, bool isAdmin = false)
+        public User(string username, string password, string country)
+            : base(username, password)
         {
-            Username = username;
-            Password = password;
+
             Country = country;
-            IsAdmin = isAdmin; // Som standard är IsAdmin false för vanliga användare
+
+        }
+
+        // Implementerar SignIn-metoden
+        public override bool SignIn(string password)
+        {
+            return Password == password;
         }
     }
 }

@@ -18,23 +18,17 @@ namespace FitTrack
     public partial class MainWindow : Window
     {
         private UserManager userManager = new UserManager();
-        public MainWindow()
+        public MainWindow(UserManager userManager)
         {
             InitializeComponent();
             userManager = new UserManager();
 
-            User testUser = new User("testuser", "Test1234!", "Sweden");
+            User testUser = new User("user", "password", "Sweden");
             userManager.RegisterUser(testUser);
 
-            User adminUser = new User("admin", "Admin1234!", "Sweden", true); // IsAdmin är satt till true
-            userManager.RegisterUser(adminUser); 
-
-        }
-
-        public MainWindow(UserManager userManager)
-        {
-            InitializeComponent();
-            this.userManager = userManager;
+            // Skapa och registrera en adminanvändare för test
+            AdminUser adminUser = new AdminUser("admin", "password", "Sweden");
+            userManager.RegisterUser(adminUser);
 
         }
 
