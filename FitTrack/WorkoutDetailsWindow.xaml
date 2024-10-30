@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitTrack"
         mc:Ignorable="d"
-        Title="WorkoutDetailsWindow" Height="450" Width="800">
+        Title="WorkoutDetailsWindow" Height="500" Width="800">
     <Grid>
-        
+        <StackPanel Margin="0,0,0,10">
+            <TextBlock Text="Workout Details" FontSize="20" FontWeight="Bold" Foreground="#333" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <Label Content="Date:" FontWeight="SemiBold"/>
+            <TextBox x:Name="DateTextBox" IsReadOnly="True" Margin="0,0,0,10" Background="White" />
+
+            <Label Content="Type of Exercise:" FontWeight="SemiBold"/>
+            <TextBox x:Name="ExerciseTypeTextBox" IsReadOnly="True" Margin="0,0,0,10" Background="White"/>
+
+            <Label Content="Duration (minutes):" FontWeight="SemiBold"/>
+            <TextBox x:Name="DurationTextBox" IsReadOnly="True" Margin="0,0,0,10" Background="White"/>
+
+            <Label Content="Calories Burned:" FontWeight="SemiBold"/>
+            <TextBox x:Name="CaloriesBurnedTextBox" IsReadOnly="True" Margin="0,0,0,10" Background="White"/>
+
+            <Label Content="Notes:" FontWeight="SemiBold"/>
+            <TextBox x:Name="NotesTextBox" IsReadOnly="True" Margin="0,0,0,10" Background="White" Height="100" AcceptsReturn="True"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Button Name="EditButton" Content="Edit" Click="EditButton_Click" Margin="5" Width="80"   />
+                <Button Name="SaveButton" Content="Save" Click="SaveButton_Click" IsEnabled="False" Margin="5" Width="80"/>
+                <Button Name="CancelButton" Content="Cancel" Click="CancelButton_Click" Margin="5" Width="80" Background="#f44336" Foreground="White"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

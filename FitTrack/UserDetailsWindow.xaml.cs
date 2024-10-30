@@ -23,5 +23,6 @@ namespace FitTrack
         {
             InitializeComponent();
         }
+
     }
 }

@@ -84,7 +84,7 @@ namespace FitTrack
         private void SignOut_Click(object sender, RoutedEventArgs e)
         {
             // Logga ut och återgå till huvudfönstret
-            MainWindow mainWindow = new MainWindow(userManager);
+            MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();   
 

@@ -83,7 +83,7 @@ namespace FitTrack
             MessageBox.Show("Registration successfull!");
             Close();
 
-            MainWindow mainWindow = new MainWindow(userManager);
+            MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
         }
