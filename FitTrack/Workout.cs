@@ -29,7 +29,7 @@ namespace FitTrack
             Username = username;
         }
 
-        // Abstrakt metod som ska implementeras av subklasser
-        public abstract string CalculateCaloriesBurned();
+        // Används för att ge olika beräkningar beroende på subklass
+        public abstract int CalculateCaloriesBurned();
     }
 }
