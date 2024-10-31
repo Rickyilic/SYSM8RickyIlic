@@ -25,7 +25,7 @@ namespace FitTrack
         public WorkoutsWindow(User user, UserManager userManager)
         {
             InitializeComponent();
-            currentUser = user;
+            this.currentUser = user;
             this.userManager = userManager;
 
             // Visa det inloggade användarnamnet
@@ -65,21 +65,12 @@ namespace FitTrack
         {
             UserDetailsWindow userDetailsWindow = new UserDetailsWindow(currentUser, userManager);
             userDetailsWindow.ShowDialog();
-
-            UsernameTextBlock.Text = $"Logged in as: {currentUser.Username}";
-
             LoadWorkouts(); // Uppdatera listan om ändringar har skett
         }
 
         private void AddWorkoutButton_Click(object sender, RoutedEventArgs e)
         {
             AddWorkoutWindow addWorkoutWindow = new AddWorkoutWindow(currentUser, userManager);
-
-            addWorkoutWindow.WorkoutAdded += (workout) =>
-            {
-                // Lägg till det nya träningspasset i WorkoutListBox
-                WorkoutListBox.Items.Add(workout);
-            };
             addWorkoutWindow.ShowDialog();
             LoadWorkouts(); // Uppdatera listan efter att ett nytt träningspass har lagts till
 
@@ -95,7 +86,7 @@ namespace FitTrack
             // Logga ut och återgå till huvudfönstret
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-            Close();   
+            this.Close();   
 
         }
 

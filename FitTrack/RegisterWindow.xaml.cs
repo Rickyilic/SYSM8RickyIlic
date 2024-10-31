@@ -62,7 +62,7 @@ namespace FitTrack
 
             if (password != confirmPassword)
             {
-                MessageBox.Show("Password doesn't match.");
+                MessageBox.Show("Password doesn't match. Try again.");
                 return;
             }
 
@@ -85,7 +85,7 @@ namespace FitTrack
 
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-            Close();
+            this.Close();
         }
 
     }

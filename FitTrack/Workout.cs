@@ -17,10 +17,6 @@ namespace FitTrack
         public string Notes { get; set; }
         public string Username { get; set; } // Användarnamn kopplat till träningspasset
 
-
-        // Ny egenskap för att visa information
-        public virtual string DisplayInfo => $"{Date} - {GetType().Name}";
-
         // Konstruktor
         protected Workout(string date, string type, int duration, int caloriesBurned, string notes, string username)
         {

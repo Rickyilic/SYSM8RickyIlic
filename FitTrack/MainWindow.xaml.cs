@@ -11,14 +11,13 @@ using System.Windows.Shapes;
 
 namespace FitTrack
 {
-    
     //push test
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        private UserManager userManager;
+        private UserManager userManager = new UserManager();
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +38,7 @@ namespace FitTrack
             RegisterWindow registerWindow = new RegisterWindow(userManager);
 
             registerWindow.Show();
-            Close();
+            this.Close();
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
@@ -53,7 +52,7 @@ namespace FitTrack
                 // Navigera till WorkoutsWindow
                 WorkoutsWindow workoutsWindow = new WorkoutsWindow(user, userManager);
                 workoutsWindow.Show();
-                Close();
+                this.Close();
             }
             else
             {

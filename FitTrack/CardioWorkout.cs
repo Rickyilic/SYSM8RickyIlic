@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace FitTrack
 {
-    public class CardioWorkout : Workout
+    class CardioWorkout : Workout
     {
 
         public int Distance { get; set; } // Avstånd i kilometer
