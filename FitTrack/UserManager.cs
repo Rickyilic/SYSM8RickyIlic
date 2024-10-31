@@ -30,7 +30,7 @@ namespace FitTrack
         // Metod för att logga in användaren med användarnamn och lösenord
         public bool TryLoginUser(string username, string password, out User user)
         {
-            user = users.OfType<User>().FirstOrDefault(u => u.Username == username && u.SignIn(password));
+            user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
             return user != null;
         }
 

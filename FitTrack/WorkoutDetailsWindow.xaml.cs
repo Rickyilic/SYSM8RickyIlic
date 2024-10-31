@@ -50,7 +50,7 @@ namespace FitTrack
             }
             else
             {
-                this.Close();
+                Close();
             }
         }
 
@@ -68,7 +68,7 @@ namespace FitTrack
                 // Bekräfta ändringar och stäng fönstret
                 MessageBox.Show("Workout details updated successfully.");
                 DialogResult = true;
-                this.Close();
+                Close();
             }
         }
 

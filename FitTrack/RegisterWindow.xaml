@@ -9,13 +9,13 @@
     <Grid>
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,5">
             <TextBlock Text="Username:"/>
-            <TextBox x:Name="UsernameTextBox" Width="70" HorizontalAlignment="Left" />
+            <TextBox x:Name="UsernameTextBox" Width="100" HorizontalAlignment="Left" />
             <TextBlock Text="Password:"/>
-            <PasswordBox x:Name="PasswordBox" Width="70" HorizontalAlignment="Left"/>
+            <PasswordBox x:Name="PasswordBox" Width="100" HorizontalAlignment="Left"/>
             <TextBlock Text="Confirm Password:"/>
-            <PasswordBox x:Name="ConfirmPasswordBox" Width="70" HorizontalAlignment="Left"/>
+            <PasswordBox x:Name="ConfirmPasswordBox" Width="100" HorizontalAlignment="Left"/>
             <TextBlock Text="Country:"/>
-            <ComboBox x:Name="CountryComboBox" Width="70" Margin="0,0,0,5" Text="Countries" HorizontalAlignment="Left">
+            <ComboBox x:Name="CountryComboBox" Width="100" Margin="0,0,0,5" Text="Countries" HorizontalAlignment="Left">
             </ComboBox>
             <Button Name="RegisterButton" Content="Register" Click="Register_Click" Width="70" HorizontalAlignment="Left"/>
 
