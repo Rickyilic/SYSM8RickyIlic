@@ -30,7 +30,7 @@ namespace FitTrack
 
             // Lägg till två träningspass för testUser
             userManager.AddWorkout(new CardioWorkout(
-                date: DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd"),
+                date: DateTime.Now.ToString("yyyy-MM-dd"),
                 duration: 30,
                 caloriesBurned: 0,
                 notes: "test",
@@ -38,7 +38,7 @@ namespace FitTrack
                 distance: 5));
 
             userManager.AddWorkout(new StrengthWorkout(
-                date: DateTime.Now.AddDays(-2).ToString("yyyy-MM-dd"),
+                date: DateTime.Now.ToString("yyyy-MM-dd"),
                 duration: 45,
                 caloriesBurned: 0,
                 notes: "test",
@@ -53,7 +53,7 @@ namespace FitTrack
 
             //även lagt till ett träningspass till admin för att testa
             userManager.AddWorkout(new StrengthWorkout(
-                date: DateTime.Now.AddDays(0).ToString("yyyy-MM-dd"),
+                date: DateTime.Now.ToString("yyyy-MM-dd"),
                 duration: 45,
                 caloriesBurned: 0,
                 notes: "test",
@@ -77,6 +77,7 @@ namespace FitTrack
         {
             string username = UsernameTextBox.Text;
             string password = PasswordBox.Password;
+            
 
             if (userManager.TryLoginUser(username, password, out User user))
             {

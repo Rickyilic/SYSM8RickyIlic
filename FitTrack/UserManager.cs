@@ -23,7 +23,7 @@ namespace FitTrack
                 users.Add(user);
                 MessageBox.Show($"User registered: {user.Username}, {user.Password}");
             }
-            
+
         }
 
         // Metod för att logga in användaren med användarnamn och lösenord
@@ -31,6 +31,12 @@ namespace FitTrack
         {
             user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
             return user != null;
+        }
+
+        //Rensar träningspass i min userManager lista
+        public void ClearWorkouts()
+        {
+            workouts.Clear();
         }
 
         // Kontrollmetod för att se om ett användarnamn redan finns

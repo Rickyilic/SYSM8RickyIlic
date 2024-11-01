@@ -36,8 +36,10 @@ namespace FitTrack
             
 
         }
-        private void LoadWorkouts()
+        public void LoadWorkouts()
         {
+
+            //säkerställer så att träningspassen i listan i workoutwindows inte dupliceras
             WorkoutListBox.Items.Clear();
 
             // Kontrollera om currentUser är av typen AdminUser
@@ -92,7 +94,9 @@ namespace FitTrack
 
         private void SignOut_Click(object sender, RoutedEventArgs e)
         {
-            // Logga ut och återgå till huvudfönstret
+            LoadWorkouts();
+            userManager.ClearWorkouts(); // rensa listan i UserManager
+
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();   

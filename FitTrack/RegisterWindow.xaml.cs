@@ -54,7 +54,7 @@ namespace FitTrack
             string username = UsernameTextBox.Text;
             string password = PasswordBox.Password;
             string confirmPassword = ConfirmPasswordBox.Password;
-            string country = (CountryComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? string.Empty;
+            string country = CountryComboBox.SelectedItem as string;
 
 
             //Logik för att registrera sig och ifall användarnamn och lösenord inte matchar eller ifall man inte valt land
@@ -80,7 +80,7 @@ namespace FitTrack
             User newUser = new User(username, password, country);
             userManager.RegisterUser(newUser);
             MessageBox.Show("Registration successfull!");
-            
+
 
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
