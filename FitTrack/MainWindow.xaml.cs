@@ -51,15 +51,6 @@ namespace FitTrack
             userManager.RegisterUser(adminUser);
             
 
-            //även lagt till ett träningspass till admin för att testa
-            userManager.AddWorkout(new StrengthWorkout(
-                date: DateTime.Now.ToString("yyyy-MM-dd"),
-                duration: 45,
-                caloriesBurned: 0,
-                notes: "test",
-                username: adminUser.Username,
-                sets: 4,
-                repetitions: 12));
 
         }
 
@@ -82,7 +73,6 @@ namespace FitTrack
             if (userManager.TryLoginUser(username, password, out User user))
             {
                 MessageBox.Show($"Welcome {user.Username}!");
-                // Navigera till WorkoutsWindow
                 WorkoutsWindow workoutsWindow = new WorkoutsWindow(user, userManager);
                 workoutsWindow.Show();
                 Close();

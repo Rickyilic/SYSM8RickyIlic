@@ -95,7 +95,7 @@ namespace FitTrack
         private void SignOut_Click(object sender, RoutedEventArgs e)
         {
             LoadWorkouts();
-            userManager.ClearWorkouts(); // rensa listan i UserManager
+            userManager.ClearWorkouts(); // Rensa listan i UserManager
 
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();

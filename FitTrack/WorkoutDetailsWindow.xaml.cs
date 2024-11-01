@@ -30,7 +30,7 @@ namespace FitTrack
             LoadWorkoutDetails();
         }
 
-        private void LoadWorkoutDetails()
+        private void LoadWorkoutDetails() // Tillåter användaren att redigera specifika detaljer av träningspasset beroende på vilken typ av träningspass det är
         {
             DateTextBox.Text = workout.Date;
             ExerciseTypeComboBox.Text = workout.Type;

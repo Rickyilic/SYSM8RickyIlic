@@ -8,8 +8,8 @@ namespace FitTrack
 {
     public class StrengthWorkout : Workout
     {
-        public int Sets { get; set; }    // Antal set
-        public int Repetitions { get; set; } // Antal repetitioner per set
+        public int Sets { get; set; }    
+        public int Repetitions { get; set; } 
 
         public StrengthWorkout(string date, int duration, int caloriesBurned, string notes, string username, int sets, int repetitions)
             : base(date, "Strength", duration, caloriesBurned, notes, username)
