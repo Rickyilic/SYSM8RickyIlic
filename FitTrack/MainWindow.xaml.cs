@@ -18,25 +18,56 @@ namespace FitTrack
     /// </summary>
     public partial class MainWindow : Window
     {
-        private UserManager userManager;
+        public static UserManager userManager = new UserManager();
         public MainWindow()
+
         {
             InitializeComponent();
-            userManager = new UserManager();
 
             User testUser = new User("user", "password", "Sweden");
             userManager.RegisterUser(testUser);
 
+
+            // Lägg till två träningspass för testUser
+            userManager.AddWorkout(new CardioWorkout(
+                date: DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd"),
+                duration: 30,
+                caloriesBurned: 0,
+                notes: "test",
+                username: testUser.Username,
+                distance: 5));
+
+            userManager.AddWorkout(new StrengthWorkout(
+                date: DateTime.Now.AddDays(-2).ToString("yyyy-MM-dd"),
+                duration: 45,
+                caloriesBurned: 0,
+                notes: "test",
+                username: testUser.Username,
+                sets: 4,
+                repetitions: 12));
+
             // Skapa och registrera en adminanvändare för test
             AdminUser adminUser = new AdminUser("admin", "password", "Sweden");
             userManager.RegisterUser(adminUser);
+            
 
+            //även lagt till ett träningspass till admin för att testa
+            userManager.AddWorkout(new StrengthWorkout(
+                date: DateTime.Now.AddDays(0).ToString("yyyy-MM-dd"),
+                duration: 45,
+                caloriesBurned: 0,
+                notes: "test",
+                username: adminUser.Username,
+                sets: 4,
+                repetitions: 12));
 
         }
 
+        public MainWindow(UserManager userManager) : this() { }
+
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            RegisterWindow registerWindow = new RegisterWindow(userManager);
+            RegisterWindow registerWindow = new RegisterWindow();
 
             registerWindow.Show();
             Close();

@@ -46,28 +46,32 @@ namespace FitTrack
                 return;
             }
 
-            if (!int.TryParse(CaloriesBurnedInput.Text, out int caloriesBurned))
-            {
-                MessageBox.Show("Please enter a valid number for calories burned.");
-                return;
-            }
+            if (!int.TryParse(SetsInput.Text, out int sets))
+                sets = 0;
 
-            
+            if (!int.TryParse(RepetitionsInput.Text, out int repetitions))
+                repetitions = 0;
+
+            if (!int.TryParse(DistanceInput.Text, out int distance))
+                distance = 0;
+
             string notes = NotesInput.Text;
 
             Workout workout;
             if (workoutType == "Cardio")
             {
-                workout = new CardioWorkout(DateTime.Now.ToString("yyyy-MM-dd"), (int)duration.TotalMinutes, caloriesBurned, notes, currentUser.Username, distance: 0);
+                workout = new CardioWorkout(DateTime.Now.ToString("yyyy-MM-dd"), (int)duration.TotalMinutes, 0, notes, currentUser.Username, distance);
             }
             else 
             {
-                workout = new StrengthWorkout(DateTime.Now.ToString("yyyy-MM-dd"), (int)duration.TotalMinutes , caloriesBurned, notes, currentUser.Username, sets: 3, repetitions: 10);
+                workout = new StrengthWorkout(DateTime.Now.ToString("yyyy-MM-dd"), (int)duration.TotalMinutes, 0, notes, currentUser.Username, sets, repetitions);
             }
 
-            // Lägg till träningspasset i användarens workout-lista
-            userManager.AddWorkout(workout);
 
+            workout.CalculateCaloriesBurned(); // Kalkylera kalorier och uppdatera fältet
+            CaloriesBurnedInput.Text = workout.CaloriesBurned.ToString(); // Visa i inputfältet
+                                                                          
+            userManager.AddWorkout(workout); // Lägg till träningspasset i användarens workout-lista
             WorkoutAdded?.Invoke(workout);
             MessageBox.Show("Workout saved successfully!");
 

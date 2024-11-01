@@ -16,6 +16,7 @@ namespace FitTrack
         {
             Sets = sets;
             Repetitions = repetitions;
+            CalculateCaloriesBurned();
         }
 
         public override int CalculateCaloriesBurned()

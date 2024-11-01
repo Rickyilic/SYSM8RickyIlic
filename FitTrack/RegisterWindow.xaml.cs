@@ -21,11 +21,10 @@ namespace FitTrack
 
   
     {
-        private UserManager userManager;
-        public RegisterWindow(UserManager userManager)
+        private UserManager userManager = MainWindow.userManager;
+        public RegisterWindow()
         {
             InitializeComponent();
-            this.userManager = userManager;
             PopulateComboBox();
         }
 
@@ -81,11 +80,12 @@ namespace FitTrack
             User newUser = new User(username, password, country);
             userManager.RegisterUser(newUser);
             MessageBox.Show("Registration successfull!");
-            Close();
+            
 
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
+
         }
 
     }

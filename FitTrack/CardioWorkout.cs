@@ -16,6 +16,7 @@ namespace FitTrack
             : base(date, "Cardio", duration, caloriesBurned, notes, username)
         {
             Distance = distance;
+            CalculateCaloriesBurned();
         }
 
         public override int CalculateCaloriesBurned()

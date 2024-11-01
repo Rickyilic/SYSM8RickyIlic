@@ -33,10 +33,23 @@ namespace FitTrack
         private void LoadWorkoutDetails()
         {
             DateTextBox.Text = workout.Date;
-            ExerciseTypeTextBox.Text = workout.Type;
+            ExerciseTypeComboBox.Text = workout.Type;
             DurationTextBox.Text = workout.Duration.ToString();
             CaloriesBurnedTextBox.Text = workout.CaloriesBurned.ToString();
             NotesTextBox.Text = workout.Notes;
+
+            if (workout is StrengthWorkout strengthWorkout)
+            {
+                SetsTextBox.Text = strengthWorkout.Sets.ToString();
+                RepetitionsTextBox.Text = strengthWorkout.Repetitions.ToString();
+                DistanceTextBox.IsEnabled = false;
+            }
+            else if (workout is CardioWorkout cardioWorkout)
+            {
+                DistanceTextBox.Text = cardioWorkout.Distance.ToString();
+                SetsTextBox.IsEnabled = false;
+                RepetitionsTextBox.IsEnabled = false;
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -46,7 +59,7 @@ namespace FitTrack
             {
                 isEditing = false;
                 SetEditingMode(isEditing);
-                LoadWorkoutDetails(); // Återställ ursprungliga värden
+                LoadWorkoutDetails(); 
             }
             else
             {
@@ -60,12 +73,23 @@ namespace FitTrack
             if (isEditing)
             {
                 workout.Date = DateTextBox.Text;
-                workout.Type = ExerciseTypeTextBox.Text;
+                workout.Type = ExerciseTypeComboBox.Text;
                 workout.Duration = int.Parse(DurationTextBox.Text);
-                workout.CaloriesBurned = int.Parse(CaloriesBurnedTextBox.Text);
                 workout.Notes = NotesTextBox.Text;
 
-                // Bekräfta ändringar och stäng fönstret
+                if (workout is StrengthWorkout strengthWorkout)
+                {
+                    strengthWorkout.Sets = int.Parse(SetsTextBox.Text);
+                    strengthWorkout.Repetitions = int.Parse(RepetitionsTextBox.Text);
+                }
+                else if (workout is CardioWorkout cardioWorkout)
+                {
+                    cardioWorkout.Distance = int.Parse(DistanceTextBox.Text);
+                }
+
+                workout.CalculateCaloriesBurned();
+                CaloriesBurnedTextBox.Text = workout.CaloriesBurned.ToString();
+
                 MessageBox.Show("Workout details updated successfully.");
                 DialogResult = true;
                 Close();
@@ -82,12 +106,18 @@ namespace FitTrack
         private void SetEditingMode(bool enableEditing)
         {
             DateTextBox.IsReadOnly = !enableEditing;
-            ExerciseTypeTextBox.IsReadOnly = !enableEditing;
+            ExerciseTypeComboBox.IsEnabled = enableEditing;
             DurationTextBox.IsReadOnly = !enableEditing;
-            CaloriesBurnedTextBox.IsReadOnly = !enableEditing;
             NotesTextBox.IsReadOnly = !enableEditing;
 
-            // Aktivera/sinaktivera Spara-knappen
+            // sätter endast "CaloriesBurnedTextBox" som read-only eftersom det automatiskt räknas ut.
+            CaloriesBurnedTextBox.IsReadOnly = true;
+
+            SetsTextBox.IsReadOnly = !enableEditing;
+            RepetitionsTextBox.IsReadOnly = !enableEditing;
+            DistanceTextBox.IsReadOnly = !enableEditing;
+
+            // Aktivera eller inaktivera Spara-knappen
             SaveButton.IsEnabled = enableEditing;
         }
     }

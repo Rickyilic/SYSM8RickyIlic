@@ -5,25 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitTrack"
         mc:Ignorable="d"
-        Title="WorkoutDetailsWindow" Height="500" Width="400">
+        Title="WorkoutDetailsWindow" Height="650" Width="400">
     <Grid>
         <StackPanel Margin="0,0,0,10">
             <TextBlock Text="Workout Details" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
-            <Label Content="Date:" FontWeight="SemiBold"/>
-            <TextBox x:Name="DateTextBox" IsReadOnly="True" Margin="10,0,10,10" />
+            <Label Content="Date:" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+            <TextBox x:Name="DateTextBox" IsReadOnly="True" Margin="10,0,10,10" Width="200" />
 
-            <Label Content="Type of Exercise:" FontWeight="SemiBold"/>
-            <TextBox x:Name="ExerciseTypeTextBox" IsReadOnly="True" Margin="10,0,10,10" />
+            <TextBlock Text="Workout Type:" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="ExerciseTypeComboBox" Width="200" Margin="0,5,0,15" IsEnabled="False">
+                <ComboBoxItem Content="Cardio" />
+                <ComboBoxItem Content="Strength" />
+            </ComboBox>
 
-            <Label Content="Duration (minutes):" FontWeight="SemiBold"/>
-            <TextBox x:Name="DurationTextBox" IsReadOnly="True" Margin="10,0,10,10"/>
+            <TextBlock Text="Calories Burned:" HorizontalAlignment="Center"/>
+            <TextBox x:Name="CaloriesBurnedTextBox" Width="200" Margin="0,5,0,15" IsReadOnly="True"/>
 
-            <Label Content="Calories Burned:" FontWeight="SemiBold"/>
-            <TextBox x:Name="CaloriesBurnedTextBox" IsReadOnly="True" Margin="10,0,10,10"/>
+            <TextBlock Text="Sets:" HorizontalAlignment="Center"/>
+            <TextBox x:Name="SetsTextBox" Width="200" Margin="0,5,0,15" IsReadOnly="True"/>
 
-            <Label Content="Notes:" FontWeight="SemiBold"/>
-            <TextBox x:Name="NotesTextBox" IsReadOnly="True" Margin="10,0,10,10" Background="White" Height="100" AcceptsReturn="True"/>
+            <TextBlock Text="Repetitions:" HorizontalAlignment="Center"/>
+            <TextBox x:Name="RepetitionsTextBox" Width="200" Margin="0,5,0,15" IsReadOnly="True"/>
+
+            <TextBlock Text="Distance (km):" HorizontalAlignment="Center"/>
+            <TextBox x:Name="DistanceTextBox" Width="200" Margin="0,5,0,15" IsReadOnly="True"/>
+
+            <TextBlock Text="Notes:" HorizontalAlignment="Center"/>
+            <TextBox x:Name="NotesTextBox" Width="200" Margin="0,5,0,15" AcceptsReturn="True" Height="60" IsReadOnly="True"/>
+
+            <TextBlock Text="Duration in minutes:" HorizontalAlignment="Center"/>
+            <TextBox x:Name="DurationTextBox" Width="200" Margin="0,5,0,15" IsReadOnly="True"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,0,10,10">
                 <Button Name="EditButton" Content="Edit" Click="EditButton_Click" Margin="5" Width="80"   />

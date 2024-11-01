@@ -11,14 +11,15 @@ namespace FitTrack
     {
 
         public string Country { get; set; }
+        public List<Workout> Workouts { get; set; } = new List<Workout>();
 
         public User(string username, string password, string country)
             : base(username, password)
         {
 
             Country = country;
-
-        }
+            
+    }
 
         // Implementerar SignIn-metoden
         public override bool SignIn(string password)

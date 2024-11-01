@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FitTrack
 {
@@ -20,11 +21,9 @@ namespace FitTrack
             if (!UserExists(user.Username))
             {
                 users.Add(user);
+                MessageBox.Show($"User registered: {user.Username}, {user.Password}");
             }
-            else
-            {
-                throw new Exception("Användarnamnet är redan upptaget.");
-            }
+            
         }
 
         // Metod för att logga in användaren med användarnamn och lösenord
@@ -39,7 +38,7 @@ namespace FitTrack
         {
             return users.Any(u => u.Username == username);
         }
-        
+
         // Lägger till träningspass
         public void AddWorkout(Workout workout)
         {

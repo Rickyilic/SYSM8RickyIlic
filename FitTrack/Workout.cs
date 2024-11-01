@@ -15,11 +15,15 @@ namespace FitTrack
         public int Duration { get; set; }
         public int CaloriesBurned { get; set; }
         public string Notes { get; set; }
-        public string Username { get; set; } // Användarnamn kopplat till träningspasset
+        public string Username { get; set; } 
 
 
-        // Ny egenskap för att visa information
-        public virtual string DisplayInfo => $"{Date} - {GetType().Name}";
+        
+        // Visar info om träningspassen i listan med workouts i workoutswindow
+        public override string ToString()
+        {
+            return $"{Date} - {Type}: {Duration} mins, {CaloriesBurned} calories";
+        }
 
         // Konstruktor
         protected Workout(string date, string type, int duration, int caloriesBurned, string notes, string username)
@@ -33,7 +37,7 @@ namespace FitTrack
             Username = username;
         }
 
-        // Används för att ge olika beräkningar beroende på subklass
+        // Ska ärvas av subklasserna och räkna ut kalorierna
         public abstract int CalculateCaloriesBurned();
     }
 }

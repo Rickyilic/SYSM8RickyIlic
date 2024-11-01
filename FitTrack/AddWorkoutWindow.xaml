@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitTrack"
         mc:Ignorable="d"
-        Title="AddWorkoutWindow" Height="350" Width="300">
+        Title="AddWorkoutWindow" Height="550" Width="300">
     <Grid Margin="10">
         <StackPanel>
             <TextBlock Text="Workout Type:" HorizontalAlignment="Center" />
@@ -16,6 +16,15 @@
 
             <TextBlock Text="Duration (HH:MM:SS)" HorizontalAlignment="Center" />
             <TextBox x:Name="DurationInput" Width="200" Margin="0,5,0,15" />
+
+            <TextBlock Text="Sets:" HorizontalAlignment="Center" />
+            <TextBox x:Name="SetsInput" Width="200" Margin="0,5,0,15" />
+
+            <TextBlock Text="Repetitions:" HorizontalAlignment="Center" />
+            <TextBox x:Name="RepetitionsInput" Width="200" Margin="0,5,0,15" />
+
+            <TextBlock Text="Distance (km):" HorizontalAlignment="Center" />
+            <TextBox x:Name="DistanceInput" Width="200" Margin="0,5,0,15" />
 
             <TextBlock Text="Calories Burned:" HorizontalAlignment="Center"  />
             <TextBox x:Name="CaloriesBurnedInput" Width="200" Margin="0,5,0,15" />
